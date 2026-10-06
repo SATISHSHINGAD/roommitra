@@ -1236,6 +1236,9 @@ function getInitialData(): DatabaseSchema {
       const email = process.env.INITIAL_ADMIN_EMAIL?.trim().toLowerCase();
       const password = process.env.INITIAL_ADMIN_PASSWORD;
       if (!email || !password) return;
+      if (password.length < 12) {
+        throw new Error('INITIAL_ADMIN_PASSWORD must be at least 12 characters long.');
+      }
 
       const existingAdmin = this.data.users.find((user) => ADMIN_ROLE_SET.has(user.role));
       const emailTaken = this.data.users.find((user) => user.email.toLowerCase() === email);
