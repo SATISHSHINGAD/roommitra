@@ -10,6 +10,11 @@ interface DemoAccountBarProps {
 export const DemoAccountBar: React.FC<DemoAccountBarProps> = ({ onOpenAdmin }) => {
   const { user, demoLogin, logout, isLoading, isAdmin } = useAuth();
 
+  // Demo shortcuts are development-only and must never appear in production.
+  if (import.meta.env.VITE_DEMO_MODE !== 'true') {
+    return null;
+  }
+
   const demoRoles: { role: UserRole; label: string; icon: React.ReactNode }[] = [
     { role: 'SUPER_ADMIN', label: 'Super Admin', icon: <Key className="w-3.5 h-3.5 text-purple-400" /> },
     { role: 'ADMIN', label: 'Admin', icon: <ShieldCheck className="w-3.5 h-3.5 text-rose-400" /> },
