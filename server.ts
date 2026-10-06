@@ -52,6 +52,28 @@ async function createApp() {
     next();
   });
 
+  // Keep serverless responses open until queued PostgreSQL writes have flushed.
+  // This prevents data mutations from being lost when a Vercel invocation ends.
+  app.use((_req, res, next) => {
+    const response = res as typeof res & { end: (...args: any[]) => any };
+    const originalEnd = response.end.bind(res);
+    let ended = false;
+
+    response.end = (...args: any[]) => {
+      if (ended) return originalEnd(...args);
+      ended = true;
+      void db.flush()
+        .catch((err) => {
+          console.error('[RoomMitra] Failed to flush queued database writes:', err);
+        })
+        .finally(() => {
+          originalEnd(...args);
+        });
+    };
+
+    next();
+  });
+
   app.use(express.json({ limit: '10mb' }));
   app.use(express.urlencoded({ extended: true, limit: '10mb' }));
   app.use(authenticateToken);
