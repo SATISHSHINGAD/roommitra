@@ -233,6 +233,10 @@ router.post('/admin-login', (req: Request, res: Response) => {
 
 // POST /api/auth/demo-login
 router.post('/demo-login', (req: Request, res: Response) => {
+  if (process.env.DEMO_MODE !== 'true') {
+    return res.status(404).json({ error: 'Demo authentication is disabled.' });
+  }
+
   const { role } = req.body;
   const targetEmailMap: Record<string, string> = {
     SUPER_ADMIN: 'superadmin@roommitra.com',
