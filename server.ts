@@ -22,27 +22,28 @@ import { db } from './server/db.ts';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-async function startServer() {
+export async function createApp() {
   const app = express();
-  const PORT = Number(process.env.PORT) || 3000;
 
   app.disable('x-powered-by');
   app.set('trust proxy', 1);
 
-  // Wait for the persistent database to be ready before authenticating or
-  // serving any application routes. This is critical for Vercel cold starts.
+  // Vercel/serverless cold starts must wait for the persistent database
+  // to initialize before authentication or any API route is evaluated.
   app.use(async (_req, res, next) => {
     try {
       await db.ready();
       next();
     } catch (err) {
       console.error('[RoomMitra] Database initialization error:', err);
-      res.status(503).json({ error: 'Database is not available. Please try again shortly.' });
+      res.status(503).json({
+        error: 'Database is not available. Please try again shortly.',
+      });
     }
   });
 
-  // Security Headers Middleware
-  app.use((req, res, next) => {
+  // Security headers.
+  app.use((_req, res, next) => {
     res.setHeader('X-Content-Type-Options', 'nosniff');
     res.setHeader('X-Frame-Options', 'SAMEORIGIN');
     res.setHeader('X-XSS-Protection', '1; mode=block');
@@ -52,15 +53,15 @@ async function startServer() {
     next();
   });
 
-  // Body Parsing with size guard
+  // Body parsing with size guard.
   app.use(express.json({ limit: '10mb' }));
   app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-  // Global Auth Token Extractor
+  // Global auth token extractor.
   app.use(authenticateToken);
 
-  // Health check endpoint
-  app.get('/api/health', (req, res) => {
+  // Health check.
+  app.get('/api/health', (_req, res) => {
     res.json({
       status: 'healthy',
       app: 'RoomMitra',
@@ -69,7 +70,7 @@ async function startServer() {
     });
   });
 
-  // API Routes
+  // API routes.
   app.use('/api/auth', authRoutes);
   app.use('/api/properties', propertyRoutes);
   app.use('/api/roommates', roommateRoutes);
@@ -83,36 +84,47 @@ async function startServer() {
   app.use('/api/upload', uploadRoutes);
   app.use('/api/system', testRoutes);
 
-  // Global Error Handler for API routes
-  app.use('/api', (err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
-    console.error('API Error:', err);
+  // API error handler.
+  app.use('/api', (err: unknown, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
+    console.error('[RoomMitra] API Error:', err);
     res.status(500).json({
       error: 'An unexpected internal server error occurred. Please try again.',
     });
   });
 
-  // Serve Frontend
-  if (process.env.NODE_ENV === 'production') {
-    const distPath = path.resolve(__dirname, 'dist');
-    app.use(express.static(distPath));
-    app.get('*', (req, res) => {
-      res.sendFile(path.resolve(distPath, 'index.html'));
-    });
-  } else {
-    // Development mode with Vite middleware
-    const vite = await createViteServer({
-      server: { middlewareMode: true },
-      appType: 'spa',
-    });
-    app.use(vite.middlewares);
+  // The public frontend is served by Vercel's static output. Only local
+  // production mode serves dist from Express.
+  if (process.env.VERCEL !== '1') {
+    if (process.env.NODE_ENV === 'production') {
+      const distPath = path.resolve(__dirname, 'dist');
+      app.use(express.static(distPath));
+      app.get('*', (_req, res) => {
+        res.sendFile(path.resolve(distPath, 'index.html'));
+      });
+    } else {
+      const vite = await createViteServer({
+        server: { middlewareMode: true },
+        appType: 'spa',
+      });
+      app.use(vite.middlewares);
+    }
   }
 
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log(`[RoomMitra] Server active on http://0.0.0.0:${PORT}`);
-  });
+  return app;
 }
 
-startServer().catch((err) => {
-  console.error('[RoomMitra] Server startup error:', err);
-  process.exit(1);
-});
+export const appPromise = createApp();
+
+if (process.env.VERCEL !== '1') {
+  const PORT = Number(process.env.PORT) || 3000;
+  appPromise
+    .then((app) => {
+      app.listen(PORT, '0.0.0.0', () => {
+        console.log(`[RoomMitra] Server active on http://0.0.0.0:${PORT}`);
+      });
+    })
+    .catch((err) => {
+      console.error('[RoomMitra] Server startup error:', err);
+      process.exit(1);
+    });
+}
