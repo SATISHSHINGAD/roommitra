@@ -110,7 +110,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setUser(data.user);
   };
 
-  const isAdmin = user?.role === 'ADMIN' || user?.role === 'SUPER_ADMIN';
+  const adminRoles: UserRole[] = [
+    'SUPER_ADMIN',
+    'ADMIN',
+    'MODERATOR',
+    'SUPPORT',
+    'CONTENT_MANAGER',
+    'FINANCE_MANAGER',
+  ];
+  const isAdmin = Boolean(user && adminRoles.includes(user.role));
   const isSuperAdmin = user?.role === 'SUPER_ADMIN';
   const isOwner = user?.role === 'PROPERTY_OWNER';
   const isRoommate = user?.role === 'ROOMMATE';
