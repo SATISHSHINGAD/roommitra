@@ -1,6 +1,5 @@
-import fs from 'fs';
-import path from 'path';
 import crypto from 'crypto';
+import { neon } from '@neondatabase/serverless';
 import { 
   User, 
   Property, 
@@ -70,8 +69,6 @@ interface DatabaseSchema {
   reviews: Review[];
   adminRoles: AdminRoleConfig[];
 }
-
-const DB_FILE_PATH = path.resolve(process.cwd(), 'data', 'roommitra_db.json');
 
 function getInitialData(): DatabaseSchema {
   const defaultSalt = 'a1b2c3d4e5f6g7h8';
@@ -193,14 +190,9 @@ function getInitialData(): DatabaseSchema {
     },
   ];
 
-  const defaultCredentials: UserCredentials[] = [
-    { userId: 'usr_super_admin_1', passwordHash: hashPassword('SuperAdmin@2026!', defaultSalt), salt: defaultSalt },
-    { userId: 'usr_admin_1', passwordHash: hashPassword('Admin@2026!', defaultSalt), salt: defaultSalt },
-    { userId: 'usr_owner_1', passwordHash: hashPassword('Owner@2026!', defaultSalt), salt: defaultSalt },
-    { userId: 'usr_roommate_1', passwordHash: hashPassword('Roommate@2026!', defaultSalt), salt: defaultSalt },
-    { userId: 'usr_provider_1', passwordHash: hashPassword('Provider@2026!', defaultSalt), salt: defaultSalt },
-    { userId: 'usr_tenant_1', passwordHash: hashPassword('User@2026!', defaultSalt), salt: defaultSalt },
-  ];
+  // Never hardcode credentials. Seed credentials are generated from explicit
+  // environment variables during database initialization.
+  const defaultCredentials: UserCredentials[] = [];
 
   const defaultProperties: Property[] = [
     {
@@ -1116,59 +1108,192 @@ function getInitialData(): DatabaseSchema {
     };
   }
 
+  const ADMIN_ROLE_SET = new Set<UserRole>([
+    'SUPER_ADMIN',
+    'ADMIN',
+    'MODERATOR',
+    'SUPPORT',
+    'CONTENT_MANAGER',
+    'FINANCE_MANAGER',
+  ]);
+
+  function getProductionData(): DatabaseSchema {
+    const initial = getInitialData();
+    return {
+      ...initial,
+      users: [],
+      credentials: [],
+      properties: [],
+      roommateProfiles: [],
+      tiffinProviders: [],
+      localServices: [],
+      applications: [],
+      bookings: [],
+      payments: [],
+      conversations: [],
+      messages: [],
+      notifications: [],
+      reports: [],
+      auditLogs: [],
+      savedProperties: [],
+      blockedUsers: [],
+      banners: [],
+      announcements: [],
+      coupons: [],
+      reviews: [],
+      categories: initial.categories,
+      adminRoles: initial.adminRoles,
+      settings: initial.settings,
+    };
+  }
+
   class RoomMitraDatabase {
     private data: DatabaseSchema;
+    private readonly sql = process.env.DATABASE_URL ? neon(process.env.DATABASE_URL) : null;
+    private readyPromise: Promise<void>;
+    private initialized = false;
+    private saveQueue: Promise<void> = Promise.resolve();
 
     constructor() {
-      this.data = this.loadData();
+      this.data = getProductionData();
+      this.readyPromise = this.initialize();
     }
 
-    private loadData(): DatabaseSchema {
-      const initial = getInitialData();
-      try {
-        const dataDir = path.dirname(DB_FILE_PATH);
-        if (!fs.existsSync(dataDir)) {
-          fs.mkdirSync(dataDir, { recursive: true });
+    public async ready(): Promise<void> {
+      return this.readyPromise;
+    }
+
+    private async initialize(): Promise<void> {
+      if (!this.sql) {
+        if (process.env.NODE_ENV === 'production') {
+          throw new Error('DATABASE_URL is required in production.');
         }
-
-        if (fs.existsSync(DB_FILE_PATH)) {
-          const fileContent = fs.readFileSync(DB_FILE_PATH, 'utf-8');
-          const parsed = JSON.parse(fileContent);
-
-          // Guarantee all arrays and settings exist
-          parsed.banners = parsed.banners || initial.banners;
-          parsed.announcements = parsed.announcements || initial.announcements;
-          parsed.coupons = parsed.coupons || initial.coupons;
-          parsed.categories = parsed.categories || initial.categories;
-          parsed.reviews = parsed.reviews || initial.reviews;
-          parsed.adminRoles = parsed.adminRoles || initial.adminRoles;
-          parsed.settings = { ...initial.settings, ...parsed.settings };
-
-          return parsed;
-        }
-      } catch (err) {
-        console.warn('Could not read existing db file, initializing with fresh dataset', err);
+        this.data = process.env.DEMO_MODE === 'true' ? getInitialData() : getProductionData();
+        this.initialized = true;
+        return;
       }
 
-      this.saveDataDirect(initial);
-      return initial;
-    }
+      await this.sql`
+        CREATE TABLE IF NOT EXISTS roommitra_state (
+          id TEXT PRIMARY KEY,
+          data JSONB NOT NULL,
+          updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+        )
+      `;
 
-  private saveDataDirect(data: DatabaseSchema): void {
-    try {
-      const dataDir = path.dirname(DB_FILE_PATH);
-      if (!fs.existsSync(dataDir)) {
-        fs.mkdirSync(dataDir, { recursive: true });
+      const rows = await this.sql`
+        SELECT data
+        FROM roommitra_state
+        WHERE id = 'default'
+        LIMIT 1
+      `;
+
+      if (rows.length > 0) {
+        const stored = rows[0]?.data;
+        const initial = getProductionData();
+        const parsed = typeof stored === 'string' ? JSON.parse(stored) : stored;
+        this.data = this.normalizeData({ ...initial, ...(parsed || {}) });
+      } else {
+        this.data = process.env.DEMO_MODE === 'true' ? getInitialData() : getProductionData();
       }
-      fs.writeFileSync(DB_FILE_PATH, JSON.stringify(data, null, 2), 'utf-8');
-    } catch (err) {
-      console.error('Failed to write database file to disk:', err);
-    }
-  }
 
-  public save(): void {
-    this.saveDataDirect(this.data);
-  }
+      this.ensureInitialAdmin();
+
+      this.initialized = true;
+      await this.persistNow();
+    }
+
+    private normalizeData(parsed: Partial<DatabaseSchema>): DatabaseSchema {
+      const initial = getProductionData();
+      return {
+        ...initial,
+        ...parsed,
+        users: Array.isArray(parsed.users) ? parsed.users : initial.users,
+        credentials: Array.isArray(parsed.credentials) ? parsed.credentials : initial.credentials,
+        properties: Array.isArray(parsed.properties) ? parsed.properties : initial.properties,
+        roommateProfiles: Array.isArray(parsed.roommateProfiles) ? parsed.roommateProfiles : initial.roommateProfiles,
+        tiffinProviders: Array.isArray(parsed.tiffinProviders) ? parsed.tiffinProviders : initial.tiffinProviders,
+        localServices: Array.isArray(parsed.localServices) ? parsed.localServices : initial.localServices,
+        applications: Array.isArray(parsed.applications) ? parsed.applications : initial.applications,
+        bookings: Array.isArray(parsed.bookings) ? parsed.bookings : initial.bookings,
+        payments: Array.isArray(parsed.payments) ? parsed.payments : initial.payments,
+        conversations: Array.isArray(parsed.conversations) ? parsed.conversations : initial.conversations,
+        messages: Array.isArray(parsed.messages) ? parsed.messages : initial.messages,
+        notifications: Array.isArray(parsed.notifications) ? parsed.notifications : initial.notifications,
+        reports: Array.isArray(parsed.reports) ? parsed.reports : initial.reports,
+        auditLogs: Array.isArray(parsed.auditLogs) ? parsed.auditLogs : initial.auditLogs,
+        savedProperties: Array.isArray(parsed.savedProperties) ? parsed.savedProperties : initial.savedProperties,
+        blockedUsers: Array.isArray(parsed.blockedUsers) ? parsed.blockedUsers : initial.blockedUsers,
+        banners: Array.isArray(parsed.banners) ? parsed.banners : initial.banners,
+        announcements: Array.isArray(parsed.announcements) ? parsed.announcements : initial.announcements,
+        coupons: Array.isArray(parsed.coupons) ? parsed.coupons : initial.coupons,
+        categories: Array.isArray(parsed.categories) ? parsed.categories : initial.categories,
+        reviews: Array.isArray(parsed.reviews) ? parsed.reviews : initial.reviews,
+        adminRoles: Array.isArray(parsed.adminRoles) ? parsed.adminRoles : initial.adminRoles,
+        settings: { ...initial.settings, ...(parsed.settings || {}) },
+      };
+    }
+
+    private ensureInitialAdmin(): void {
+      const email = process.env.INITIAL_ADMIN_EMAIL?.trim().toLowerCase();
+      const password = process.env.INITIAL_ADMIN_PASSWORD;
+      if (!email || !password) return;
+
+      const existingAdmin = this.data.users.find((user) => ADMIN_ROLE_SET.has(user.role));
+      const emailTaken = this.data.users.find((user) => user.email.toLowerCase() === email);
+      if (existingAdmin || emailTaken) return;
+
+      const now = new Date().toISOString();
+      const userId = `usr_${crypto.randomUUID()}`;
+      const salt = generateSalt();
+
+      const adminUser: User = {
+        id: userId,
+        name: process.env.INITIAL_ADMIN_NAME?.trim() || 'RoomMitra Administrator',
+        email,
+        phone: process.env.INITIAL_ADMIN_PHONE?.trim() || '',
+        role: 'SUPER_ADMIN',
+        city: process.env.INITIAL_ADMIN_CITY?.trim() || 'Ahmedabad',
+        occupation: 'Platform Administrator',
+        companyOrCollege: 'RoomMitra',
+        bio: 'Initial platform administrator account.',
+        isEmailVerified: true,
+        isPhoneVerified: Boolean(process.env.INITIAL_ADMIN_PHONE),
+        isIdentityVerified: true,
+        isSuspended: false,
+        isBanned: false,
+        privacySettings: { hidePhone: true, hideEmail: true, allowDirectMessages: false },
+        createdAt: now,
+        updatedAt: now,
+      };
+
+      this.data.users.push(adminUser);
+      this.data.credentials.push({
+        userId,
+        passwordHash: hashPassword(password, salt),
+        salt,
+      });
+    }
+
+    private async persistNow(): Promise<void> {
+      if (!this.sql) return;
+      const payload = JSON.stringify(this.data);
+      await this.sql`
+        INSERT INTO roommitra_state (id, data, updated_at)
+        VALUES ('default', ${payload}::jsonb, NOW())
+        ON CONFLICT (id)
+        DO UPDATE SET data = EXCLUDED.data, updated_at = NOW()
+      `;
+    }
+
+    public save(): void {
+      if (!this.sql || !this.initialized) return;
+      this.saveQueue = this.saveQueue
+        .then(() => this.persistNow())
+        .catch((err) => {
+          console.error('[RoomMitra] PostgreSQL persistence error:', err);
+        });
+    }
 
   // Users
   public getUsers(): User[] {
