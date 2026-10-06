@@ -100,7 +100,11 @@ async function createApp() {
   app.use('/api/admin', adminRoutes);
   app.use('/api/content', contentRoutes);
   app.use('/api/upload', uploadRoutes);
-  app.use('/api/system', testRoutes);
+
+  // Internal diagnostics/security test suite is demo-only.
+  if (process.env.DEMO_MODE === 'true') {
+    app.use('/api/system', testRoutes);
+  }
 
   app.use('/api', (err: unknown, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
     console.error('[RoomMitra] API Error:', err);
