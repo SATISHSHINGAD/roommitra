@@ -20,6 +20,7 @@ import adminRoutes from './server/routes/adminRoutes.ts';
 import uploadRoutes from './server/routes/uploadRoutes.ts';
 import testRoutes from './server/routes/testRoutes.ts';
 import contentRoutes from './server/routes/contentRoutes.ts';
+import { db } from './server/db.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -28,12 +29,29 @@ async function startServer() {
   const app = express();
   const PORT = Number(process.env.PORT) || 3000;
 
+  app.disable('x-powered-by');
+  app.set('trust proxy', 1);
+
+  // Wait for the persistent database to be ready before authenticating or
+  // serving any application routes. This is critical for Vercel cold starts.
+  app.use(async (_req, res, next) => {
+    try {
+      await db.ready();
+      next();
+    } catch (err) {
+      console.error('[RoomMitra] Database initialization error:', err);
+      res.status(503).json({ error: 'Database is not available. Please try again shortly.' });
+    }
+  });
+
   // Security Headers Middleware
   app.use((req, res, next) => {
     res.setHeader('X-Content-Type-Options', 'nosniff');
     res.setHeader('X-Frame-Options', 'SAMEORIGIN');
     res.setHeader('X-XSS-Protection', '1; mode=block');
     res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+    res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+    res.setHeader('Cross-Origin-Resource-Policy', 'same-origin');
     next();
   });
 
