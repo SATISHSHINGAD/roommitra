@@ -1296,6 +1296,10 @@ function getInitialData(): DatabaseSchema {
         });
     }
 
+    public async flush(): Promise<void> {
+      await this.saveQueue;
+    }
+
   // Users
   public getUsers(): User[] {
     return this.data.users;
