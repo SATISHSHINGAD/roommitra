@@ -71,8 +71,6 @@ interface DatabaseSchema {
 }
 
 function getInitialData(): DatabaseSchema {
-  const defaultSalt = 'a1b2c3d4e5f6g7h8';
-
   const defaultUsers: User[] = [
     {
       id: 'usr_super_admin_1',
