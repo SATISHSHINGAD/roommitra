@@ -22,14 +22,13 @@ import { db } from './server/db.ts';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-export async function createApp() {
+async function createApp() {
   const app = express();
 
   app.disable('x-powered-by');
   app.set('trust proxy', 1);
 
-  // Vercel/serverless cold starts must wait for the persistent database
-  // to initialize before authentication or any API route is evaluated.
+  // Wait for PostgreSQL initialization before any authenticated/API request.
   app.use(async (_req, res, next) => {
     try {
       await db.ready();
@@ -53,11 +52,8 @@ export async function createApp() {
     next();
   });
 
-  // Body parsing with size guard.
   app.use(express.json({ limit: '10mb' }));
   app.use(express.urlencoded({ extended: true, limit: '10mb' }));
-
-  // Global auth token extractor.
   app.use(authenticateToken);
 
   // Health check.
@@ -84,7 +80,6 @@ export async function createApp() {
   app.use('/api/upload', uploadRoutes);
   app.use('/api/system', testRoutes);
 
-  // API error handler.
   app.use('/api', (err: unknown, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
     console.error('[RoomMitra] API Error:', err);
     res.status(500).json({
@@ -92,39 +87,34 @@ export async function createApp() {
     });
   });
 
-  // The public frontend is served by Vercel's static output. Only local
-  // production mode serves dist from Express.
-  if (process.env.VERCEL !== '1') {
-    if (process.env.NODE_ENV === 'production') {
-      const distPath = path.resolve(__dirname, 'dist');
-      app.use(express.static(distPath));
-      app.get('*', (_req, res) => {
-        res.sendFile(path.resolve(distPath, 'index.html'));
-      });
-    } else {
-      const vite = await createViteServer({
-        server: { middlewareMode: true },
-        appType: 'spa',
-      });
-      app.use(vite.middlewares);
-    }
+  // Serve the Vite production build in production. Vercel bundles dist/**
+  // with the Node application via vercel.json.
+  if (process.env.NODE_ENV === 'production') {
+    const distPath = path.resolve(__dirname, 'dist');
+    app.use(express.static(distPath));
+    app.get('*', (_req, res) => {
+      res.sendFile(path.resolve(distPath, 'index.html'));
+    });
+  } else {
+    const vite = await createViteServer({
+      server: { middlewareMode: true },
+      appType: 'spa',
+    });
+    app.use(vite.middlewares);
   }
 
   return app;
 }
 
-export const appPromise = createApp();
+const app = await createApp();
 
+export default app;
+
+// Keep the existing local "npm run dev" / "npm start" experience.
+// On Vercel the platform owns the HTTP lifecycle and invokes the exported app.
 if (process.env.VERCEL !== '1') {
   const PORT = Number(process.env.PORT) || 3000;
-  appPromise
-    .then((app) => {
-      app.listen(PORT, '0.0.0.0', () => {
-        console.log(`[RoomMitra] Server active on http://0.0.0.0:${PORT}`);
-      });
-    })
-    .catch((err) => {
-      console.error('[RoomMitra] Server startup error:', err);
-      process.exit(1);
-    });
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`[RoomMitra] Server active on http://0.0.0.0:${PORT}`);
+  });
 }
