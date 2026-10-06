@@ -3,8 +3,13 @@ import crypto from 'crypto';
 import { db } from './db.ts';
 import { User, UserRole, AdminPermission } from '../src/types/index.ts';
 
-const AUTH_SECRET = process.env.AUTH_SECRET || 'roommitra_secure_signature_secret_2026';
-const TOKEN_EXPIRY_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
+const configuredAuthSecret = process.env.AUTH_SECRET?.trim();
+if (!configuredAuthSecret && process.env.NODE_ENV === 'production') {
+  throw new Error('AUTH_SECRET is required in production.');
+}
+const AUTH_SECRET = configuredAuthSecret || crypto.randomBytes(32).toString('hex');
+const SESSION_EXPIRY_DAYS = Math.max(1, Number(process.env.SESSION_EXPIRY_DAYS || 7));
+const TOKEN_EXPIRY_MS = SESSION_EXPIRY_DAYS * 24 * 60 * 60 * 1000;
 
 export interface AuthenticatedRequest extends Request {
   user?: User;
