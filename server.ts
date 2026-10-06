@@ -1,11 +1,8 @@
+import 'dotenv/config';
 import express from 'express';
 import { createServer as createViteServer } from 'vite';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import dotenv from 'dotenv';
-
-// Load environment variables
-dotenv.config();
 
 import { authenticateToken } from './server/auth.ts';
 import authRoutes from './server/routes/authRoutes.ts';
