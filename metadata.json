@@ -1,0 +1,6 @@
+{
+  "name": "RoomMitra",
+  "description": "Full-stack discovery and management platform for verified PGs, rooms, roommates, tiffin services, and rentals across India.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

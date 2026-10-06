@@ -1,0 +1,1342 @@
+{
+  "users": [
+    {
+      "id": "usr_super_admin_1",
+      "name": "Arjun Verma",
+      "email": "superadmin@roommitra.com",
+      "phone": "+91 98112 00001",
+      "role": "SUPER_ADMIN",
+      "city": "Bengaluru",
+      "occupation": "System Architect",
+      "companyOrCollege": "RoomMitra HQ",
+      "bio": "Platform founder and infrastructure security officer.",
+      "isEmailVerified": true,
+      "isPhoneVerified": true,
+      "isIdentityVerified": true,
+      "isSuspended": false,
+      "isBanned": false,
+      "privacySettings": {
+        "hidePhone": false,
+        "hideEmail": false,
+        "allowDirectMessages": true
+      },
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "usr_admin_1",
+      "name": "Priya Sharma",
+      "email": "admin@roommitra.com",
+      "phone": "+91 98112 00002",
+      "role": "ADMIN",
+      "city": "Delhi NCR",
+      "occupation": "Lead Moderator",
+      "companyOrCollege": "RoomMitra Trust & Safety",
+      "bio": "Property verification and community safety manager.",
+      "isEmailVerified": true,
+      "isPhoneVerified": true,
+      "isIdentityVerified": true,
+      "isSuspended": false,
+      "isBanned": false,
+      "privacySettings": {
+        "hidePhone": false,
+        "hideEmail": false,
+        "allowDirectMessages": true
+      },
+      "createdAt": "2026-01-02T00:00:00.000Z",
+      "updatedAt": "2026-01-02T00:00:00.000Z"
+    },
+    {
+      "id": "usr_owner_1",
+      "name": "Rajesh Iyer",
+      "email": "owner@roommitra.com",
+      "phone": "+91 98200 45678",
+      "role": "PROPERTY_OWNER",
+      "city": "Bengaluru",
+      "occupation": "Real Estate Host & Investor",
+      "companyOrCollege": "Iyer Living Spaces",
+      "bio": "Hosting premium verified student and techie co-living stays in Koramangala & HSR.",
+      "isEmailVerified": true,
+      "isPhoneVerified": true,
+      "isIdentityVerified": true,
+      "isSuspended": false,
+      "isBanned": false,
+      "privacySettings": {
+        "hidePhone": false,
+        "hideEmail": false,
+        "allowDirectMessages": true
+      },
+      "createdAt": "2026-01-10T10:00:00.000Z",
+      "updatedAt": "2026-01-10T10:00:00.000Z"
+    },
+    {
+      "id": "usr_roommate_1",
+      "name": "Ananya Deshmukh",
+      "email": "roommate@roommitra.com",
+      "phone": "+91 97654 32109",
+      "role": "ROOMMATE",
+      "city": "Pune",
+      "occupation": "Senior UX Designer",
+      "companyOrCollege": "Fintech Unicorn, Viman Nagar",
+      "bio": "Vegetarian, calm reader, early riser looking for clean flatmate in Viman Nagar/Kalyani Nagar.",
+      "isEmailVerified": true,
+      "isPhoneVerified": true,
+      "isIdentityVerified": true,
+      "isSuspended": false,
+      "isBanned": false,
+      "privacySettings": {
+        "hidePhone": true,
+        "hideEmail": true,
+        "allowDirectMessages": true
+      },
+      "createdAt": "2026-01-15T12:00:00.000Z",
+      "updatedAt": "2026-01-15T12:00:00.000Z"
+    },
+    {
+      "id": "usr_provider_1",
+      "name": "Annapurna Kitchens",
+      "email": "tiffin@roommitra.com",
+      "phone": "+91 99887 76655",
+      "role": "SERVICE_PROVIDER",
+      "city": "Bengaluru",
+      "occupation": "FSSAI Certified Cloud Kitchen Chef",
+      "companyOrCollege": "Annapurna Foodworks LLP",
+      "bio": "Fresh, nutritious ghar-ka-khana home-style tiffins delivered on time every single day.",
+      "isEmailVerified": true,
+      "isPhoneVerified": true,
+      "isIdentityVerified": true,
+      "isSuspended": false,
+      "isBanned": false,
+      "privacySettings": {
+        "hidePhone": false,
+        "hideEmail": false,
+        "allowDirectMessages": true
+      },
+      "createdAt": "2026-01-20T08:00:00.000Z",
+      "updatedAt": "2026-01-20T08:00:00.000Z"
+    },
+    {
+      "id": "usr_tenant_1",
+      "name": "Rohan Patel",
+      "email": "user@roommitra.com",
+      "phone": "+91 91234 56780",
+      "role": "USER",
+      "city": "Bengaluru",
+      "occupation": "Software Engineer",
+      "companyOrCollege": "SaaS Startup, Indiranagar",
+      "bio": "Relocated recently from Ahmedabad. Looking for single occupancy room or chill flatmates.",
+      "isEmailVerified": true,
+      "isPhoneVerified": false,
+      "isIdentityVerified": false,
+      "isSuspended": false,
+      "isBanned": false,
+      "privacySettings": {
+        "hidePhone": false,
+        "hideEmail": true,
+        "allowDirectMessages": true
+      },
+      "createdAt": "2026-02-01T14:30:00.000Z",
+      "updatedAt": "2026-02-01T14:30:00.000Z"
+    }
+  ],
+  "credentials": [
+    {
+      "userId": "usr_super_admin_1",
+      "passwordHash": "f766bb65b5be8230ec389333a416c8e9377f9843383d3f158ab4d88fdc4d7f6e1256d09890fff5ffd5e2a9901697dcae2ebbb7ca9dadae040b19019b196bbf7a",
+      "salt": "a1b2c3d4e5f6g7h8"
+    },
+    {
+      "userId": "usr_admin_1",
+      "passwordHash": "ad5b3935b1ce972ee387313eac6cc0e951881d024c0bfd01efdd4354d84844c8b54b053b129a68e1bd71eddc3a42f0be571eb7f6584fb17fff5b068f1d28748c",
+      "salt": "a1b2c3d4e5f6g7h8"
+    },
+    {
+      "userId": "usr_owner_1",
+      "passwordHash": "713a7767d4e12e59a5224a79d62d0906c0c693f8bd6ef0153ee7efef3efd3c28ddcf28555545cc4212524163a0d380b6b404dada8b71499be9311a3c480c5df7",
+      "salt": "a1b2c3d4e5f6g7h8"
+    },
+    {
+      "userId": "usr_roommate_1",
+      "passwordHash": "93615372359b9465b799bb2add0b0b449ae5d2c006b4f906c18d351ea2722d33d2fa36d8617cdfbf9b1b97caf24488f3df7d4cd2e06d3687405ceaacde29d210",
+      "salt": "a1b2c3d4e5f6g7h8"
+    },
+    {
+      "userId": "usr_provider_1",
+      "passwordHash": "e1c09016362641ac237b3731053ff22d863f0871adcec763b84dadba2b6009d872d9cf9ba5a1c303e7d8776a0471352f53371dc3dfd2fcc6ba9ce03caf37c431",
+      "salt": "a1b2c3d4e5f6g7h8"
+    },
+    {
+      "userId": "usr_tenant_1",
+      "passwordHash": "980823aaff526b1f4f74615eb8b94c31a9d5b16e9190862aaf8b7861c02b258d63cea7206ac1ba99eac749de4d02158b6008faf01b9583db4735cbc473532480",
+      "salt": "a1b2c3d4e5f6g7h8"
+    }
+  ],
+  "properties": [
+    {
+      "id": "prop_blr_101",
+      "ownerId": "usr_owner_1",
+      "ownerName": "Rajesh Iyer",
+      "ownerPhone": "+91 98200 45678",
+      "title": "Zest Stays Luxury Co-Living & Studio PG",
+      "propertyType": "PG",
+      "roomType": "SINGLE",
+      "genderPreference": "UNISEX",
+      "address": "14th Main Road, 4th Block, Koramangala",
+      "city": "Bengaluru",
+      "area": "Koramangala",
+      "pincode": "560034",
+      "latitude": 12.9352,
+      "longitude": 77.6245,
+      "rentPerMonth": 14500,
+      "securityDeposit": 20000,
+      "maintenanceIncluded": true,
+      "availableFrom": "2026-10-15",
+      "occupancyCount": 1,
+      "amenities": [
+        "High-speed Wi-Fi",
+        "Air Conditioning",
+        "Power Backup",
+        "Daily Housekeeping",
+        "RO Water Purifier",
+        "Attached Bathroom",
+        "Washing Machine",
+        "Security / CCTV",
+        "3-Time Meals Included"
+      ],
+      "rules": [
+        "No loud music after 11 PM",
+        "No smoking inside rooms",
+        "Guests permitted until 8 PM"
+      ],
+      "description": "Ultra-modern co-living studio with ergonomic study setup, hi-speed fiber internet, and home-cooked chef meals. Located 2 minutes from Sony World Signal.",
+      "images": [
+        "/src/assets/images/hero_roommitra_pg_1791254850665.jpg",
+        "/src/assets/images/roommate_community_lounge_1791254872925.jpg"
+      ],
+      "status": "APPROVED",
+      "isVerified": true,
+      "viewsCount": 342,
+      "createdAt": "2026-02-10T11:00:00.000Z",
+      "updatedAt": "2026-02-10T11:00:00.000Z"
+    },
+    {
+      "id": "prop_blr_102",
+      "ownerId": "usr_owner_1",
+      "ownerName": "Rajesh Iyer",
+      "ownerPhone": "+91 98200 45678",
+      "title": "Green Meadows 2BHK Furnished Tech Flat",
+      "propertyType": "FLAT",
+      "roomType": "DOUBLE",
+      "genderPreference": "ANY",
+      "address": "27th Main, Sector 1, HSR Layout",
+      "city": "Bengaluru",
+      "area": "HSR Layout",
+      "pincode": "560102",
+      "latitude": 12.9121,
+      "longitude": 77.6446,
+      "rentPerMonth": 18000,
+      "securityDeposit": 35000,
+      "maintenanceIncluded": false,
+      "availableFrom": "2026-10-20",
+      "occupancyCount": 2,
+      "amenities": [
+        "High-speed Wi-Fi",
+        "Power Backup",
+        "Geyser",
+        "Washing Machine",
+        "Refrigerator",
+        "Covered Two-Wheeler Parking",
+        "Lift Access",
+        "Modular Kitchen"
+      ],
+      "rules": [
+        "No late night loud parties",
+        "Pets allowed on prior discussion"
+      ],
+      "description": "Fully furnished spacious master bedroom in a quiet residential gated society. Walkable to tech parks, cafes, and 24x7 supermarkets.",
+      "images": [
+        "/src/assets/images/property_modern_apartment_1791254862331.jpg",
+        "/src/assets/images/hero_roommitra_pg_1791254850665.jpg"
+      ],
+      "status": "APPROVED",
+      "isVerified": true,
+      "viewsCount": 289,
+      "createdAt": "2026-02-15T09:30:00.000Z",
+      "updatedAt": "2026-02-15T09:30:00.000Z"
+    },
+    {
+      "id": "prop_pune_201",
+      "ownerId": "usr_owner_1",
+      "ownerName": "Rajesh Iyer",
+      "ownerPhone": "+91 98200 45678",
+      "title": "Serene Heights Premium Girls PG",
+      "propertyType": "PG",
+      "roomType": "DOUBLE",
+      "genderPreference": "FEMALE",
+      "address": "Plot 42, Clover Park, Viman Nagar",
+      "city": "Pune",
+      "area": "Viman Nagar",
+      "pincode": "411014",
+      "latitude": 18.5679,
+      "longitude": 73.9143,
+      "rentPerMonth": 10500,
+      "securityDeposit": 15000,
+      "maintenanceIncluded": true,
+      "availableFrom": "2026-10-10",
+      "occupancyCount": 2,
+      "amenities": [
+        "High-speed Wi-Fi",
+        "24x7 Biometric Security",
+        "Daily Cleaning",
+        "RO Water",
+        "Nutritious Food",
+        "Geyser",
+        "Power Backup"
+      ],
+      "rules": [
+        "Female residents only",
+        "Visiting hours till 7:30 PM",
+        "Smoking strictly prohibited"
+      ],
+      "description": "Safe, premium female-only PG with biometric entrance, full CCTV surveillance, home-style food, and quiet study areas. Walkable to Symbiosis and tech parks.",
+      "images": [
+        "/src/assets/images/roommate_community_lounge_1791254872925.jpg",
+        "/src/assets/images/hero_roommitra_pg_1791254850665.jpg"
+      ],
+      "status": "APPROVED",
+      "isVerified": true,
+      "viewsCount": 198,
+      "createdAt": "2026-02-18T14:00:00.000Z",
+      "updatedAt": "2026-02-18T14:00:00.000Z"
+    },
+    {
+      "id": "prop_hyd_301",
+      "ownerId": "usr_owner_1",
+      "ownerName": "Rajesh Iyer",
+      "ownerPhone": "+91 98200 45678",
+      "title": "Cyber Nest Executive Coliving Suites",
+      "propertyType": "PG",
+      "roomType": "SINGLE",
+      "genderPreference": "MALE",
+      "address": "Near Mindspace IT Park, Madhapur",
+      "city": "Hyderabad",
+      "area": "Hitec City",
+      "pincode": "500081",
+      "latitude": 17.4435,
+      "longitude": 78.3772,
+      "rentPerMonth": 13000,
+      "securityDeposit": 18000,
+      "maintenanceIncluded": true,
+      "availableFrom": "2026-10-12",
+      "occupancyCount": 1,
+      "amenities": [
+        "High-speed Wi-Fi",
+        "Air Conditioning",
+        "Power Backup",
+        "Gym Access",
+        "Daily Housekeeping",
+        "South & North Meals"
+      ],
+      "rules": [
+        "Quiet hours post 11:30 PM",
+        "Clean common spaces after use"
+      ],
+      "description": "Ideal stay for tech professionals working in Mindspace and Cyber Towers. 24x7 high speed Wi-Fi, laundry facilities, and healthy meal options.",
+      "images": [
+        "/src/assets/images/hero_roommitra_pg_1791254850665.jpg",
+        "/src/assets/images/property_modern_apartment_1791254862331.jpg"
+      ],
+      "status": "APPROVED",
+      "isVerified": true,
+      "viewsCount": 215,
+      "createdAt": "2026-02-22T16:00:00.000Z",
+      "updatedAt": "2026-02-22T16:00:00.000Z"
+    },
+    {
+      "id": "prop_pending_01",
+      "ownerId": "usr_owner_1",
+      "ownerName": "Rajesh Iyer",
+      "ownerPhone": "+91 98200 45678",
+      "title": "Skyline Studio 1RK Apartment",
+      "propertyType": "STUDIO",
+      "roomType": "SINGLE",
+      "genderPreference": "ANY",
+      "address": "B-Block, Cyber City View, Gurugram",
+      "city": "Delhi NCR",
+      "area": "Cyber City",
+      "pincode": "122002",
+      "latitude": 28.4906,
+      "longitude": 77.0908,
+      "rentPerMonth": 21000,
+      "securityDeposit": 30000,
+      "maintenanceIncluded": false,
+      "availableFrom": "2026-11-01",
+      "occupancyCount": 1,
+      "amenities": [
+        "Air Conditioning",
+        "High-speed Wi-Fi",
+        "Balcony",
+        "Modular Kitchen",
+        "Power Backup",
+        "24x7 Guard"
+      ],
+      "rules": [
+        "Advance notice of 1 month before vacating"
+      ],
+      "description": "Newly finished modern 1RK studio with private balcony and granite kitchenette. Rapid Metro Cyber City is just 500 meters away.",
+      "images": [
+        "/src/assets/images/property_modern_apartment_1791254862331.jpg"
+      ],
+      "status": "PENDING_REVIEW",
+      "isVerified": false,
+      "viewsCount": 12,
+      "createdAt": "2026-03-01T10:00:00.000Z",
+      "updatedAt": "2026-03-01T10:00:00.000Z"
+    }
+  ],
+  "roommateProfiles": [
+    {
+      "id": "rm_prof_1",
+      "userId": "usr_roommate_1",
+      "userName": "Ananya Deshmukh",
+      "userAge": 25,
+      "userGender": "FEMALE",
+      "avatarUrl": "",
+      "city": "Pune",
+      "preferredAreas": [
+        "Viman Nagar",
+        "Kalyani Nagar",
+        "Koregaon Park"
+      ],
+      "budgetMin": 8000,
+      "budgetMax": 15000,
+      "occupation": "Senior UX Designer",
+      "companyOrCollege": "Fintech Studio",
+      "foodPreference": "VEG",
+      "smokingPreference": false,
+      "drinkingPreference": false,
+      "petsAllowed": true,
+      "sleepSchedule": "EARLY_BIRD",
+      "cleanliness": "VERY_CLEAN",
+      "moveInDate": "2026-10-25",
+      "bio": "Calm, respectful flatmate who loves indoor plants, yoga, and weekend baking. Looking for like-minded working women to share a 2BHK.",
+      "interests": [
+        "Design",
+        "Yoga",
+        "Reading",
+        "Baking",
+        "Coffee"
+      ],
+      "contactPreference": "IN_APP",
+      "isActive": true,
+      "createdAt": "2026-02-05T10:00:00.000Z"
+    },
+    {
+      "id": "rm_prof_2",
+      "userId": "usr_tenant_1",
+      "userName": "Rohan Patel",
+      "userAge": 24,
+      "userGender": "MALE",
+      "avatarUrl": "",
+      "city": "Bengaluru",
+      "preferredAreas": [
+        "Koramangala",
+        "HSR Layout",
+        "Indiranagar"
+      ],
+      "budgetMin": 10000,
+      "budgetMax": 18000,
+      "occupation": "Software Engineer",
+      "companyOrCollege": "Tech Startup",
+      "foodPreference": "EGGETARIAN",
+      "smokingPreference": false,
+      "drinkingPreference": false,
+      "petsAllowed": false,
+      "sleepSchedule": "NIGHT_OWL",
+      "cleanliness": "MODERATE",
+      "moveInDate": "2026-11-01",
+      "bio": "Developer working in hybrid mode. Keeps common areas neat, respects quiet time during work hours, enjoys gaming on weekends.",
+      "interests": [
+        "Coding",
+        "Gaming",
+        "Football",
+        "Podcasts"
+      ],
+      "contactPreference": "IN_APP",
+      "isActive": true,
+      "createdAt": "2026-02-12T15:00:00.000Z"
+    },
+    {
+      "id": "rm_prof_3",
+      "userId": "usr_dummy_3",
+      "userName": "Tanvi Kulkarni",
+      "userAge": 26,
+      "userGender": "FEMALE",
+      "avatarUrl": "",
+      "city": "Bengaluru",
+      "preferredAreas": [
+        "Koramangala",
+        "BTM Layout"
+      ],
+      "budgetMin": 11000,
+      "budgetMax": 17000,
+      "occupation": "Product Analyst",
+      "companyOrCollege": "E-commerce Corp",
+      "foodPreference": "VEG",
+      "smokingPreference": false,
+      "drinkingPreference": false,
+      "petsAllowed": true,
+      "sleepSchedule": "FLEXIBLE",
+      "cleanliness": "VERY_CLEAN",
+      "moveInDate": "2026-10-30",
+      "bio": "Chilled out, respectful housemate looking for a clean, peaceful place with friendly flatmates.",
+      "interests": [
+        "Cinema",
+        "Photography",
+        "Badminton"
+      ],
+      "contactPreference": "IN_APP",
+      "isActive": true,
+      "createdAt": "2026-02-14T11:00:00.000Z"
+    }
+  ],
+  "tiffinProviders": [
+    {
+      "id": "tif_01",
+      "providerId": "usr_provider_1",
+      "businessName": "Annapurna Satvik Tiffins",
+      "contactPerson": "Chef Ramesh",
+      "phone": "+91 99887 76655",
+      "email": "tiffin@roommitra.com",
+      "city": "Bengaluru",
+      "deliveryAreas": [
+        "Koramangala",
+        "HSR Layout",
+        "BTM Layout",
+        "Indiranagar"
+      ],
+      "dietType": "PURE_VEG",
+      "mealTypes": [
+        "LUNCH",
+        "DINNER"
+      ],
+      "pricePerMeal": 110,
+      "monthlySubscriptionPrice": 3200,
+      "hygieneRating": 4.9,
+      "fssaiNumber": "11223344556677",
+      "verificationStatus": "VERIFIED",
+      "sampleMenu": [
+        {
+          "day": "Monday",
+          "lunch": "4 Phulkas, Paneer Butter Masala, Dal Tadka, Jeera Rice, Salad",
+          "dinner": "3 Parathas, Aloo Gobi, Curd, Green Moong Khichdi"
+        },
+        {
+          "day": "Tuesday",
+          "lunch": "4 Phulkas, Mixed Veg Handi, Yellow Dal, Steamed Rice, Gulab Jamun",
+          "dinner": "4 Rotis, Rajma Masala, Steamed Rice, Kachumber"
+        },
+        {
+          "day": "Wednesday",
+          "lunch": "4 Phulkas, Chana Masala, Gujarati Dal, Veg Pulao, Raita",
+          "dinner": "3 Methi Theplas, Dum Aloo, Curd, Buttermilk"
+        },
+        {
+          "day": "Thursday",
+          "lunch": "4 Phulkas, Matar Paneer, Dal Fry, Jeera Rice, Sweet",
+          "dinner": "4 Rotis, Bhindi Masala, Dal Makhani, Steamed Rice"
+        },
+        {
+          "day": "Friday",
+          "lunch": "4 Phulkas, Palak Paneer, Masoor Dal, Lemon Rice, Papad",
+          "dinner": "Veg Biryani, Mirchi ka Salan, Boondi Raita, Kheer"
+        }
+      ],
+      "description": "Zero soda, low oil, 100% home-style nutritious food prepared daily in an ultra-clean FSSAI kitchen. Insulated tiffin delivery hot at your doorstep.",
+      "imageUrl": "/src/assets/images/tiffin_food_thali_1791254883521.jpg",
+      "isAcceptingOrders": true,
+      "createdAt": "2026-02-01T10:00:00.000Z"
+    },
+    {
+      "id": "tif_02",
+      "providerId": "usr_dummy_provider_2",
+      "businessName": "Maa Ki Rasoi Homemade Food",
+      "contactPerson": "Sunita Devi",
+      "phone": "+91 98450 11223",
+      "email": "maakirasoi@example.com",
+      "city": "Pune",
+      "deliveryAreas": [
+        "Viman Nagar",
+        "Kalyani Nagar",
+        "Magarpatta",
+        "Wakad"
+      ],
+      "dietType": "VEG_AND_NON_VEG",
+      "mealTypes": [
+        "BREAKFAST",
+        "LUNCH",
+        "DINNER"
+      ],
+      "pricePerMeal": 125,
+      "monthlySubscriptionPrice": 3600,
+      "hygieneRating": 4.8,
+      "fssaiNumber": "22334455667788",
+      "verificationStatus": "VERIFIED",
+      "sampleMenu": [
+        {
+          "day": "Monday",
+          "lunch": "4 Chapati, Chicken Curry / Shahi Paneer, Rice, Dal",
+          "dinner": "Khichdi, Kadhi, Papad, Achar"
+        },
+        {
+          "day": "Wednesday",
+          "lunch": "Egg Curry / Dum Aloo, 4 Rotis, Rice, Dal Fry",
+          "dinner": "Pulao, Raita, Mixed Sabzi"
+        }
+      ],
+      "description": "North & Maharashtrian fusion comfort food. Hot brass-catered homestyle lunch and dinner.",
+      "imageUrl": "/src/assets/images/tiffin_food_thali_1791254883521.jpg",
+      "isAcceptingOrders": true,
+      "createdAt": "2026-02-08T12:00:00.000Z"
+    }
+  ],
+  "localServices": [
+    {
+      "id": "svc_01",
+      "providerId": "usr_srv_packers",
+      "title": "CitySwift Movers & Packers",
+      "category": "MOVERS_PACKERS",
+      "city": "Bengaluru",
+      "areasServed": [
+        "All Bengaluru Metro Areas"
+      ],
+      "startingPrice": 1499,
+      "pricingUnit": "Per Room / Shift",
+      "rating": 4.9,
+      "reviewsCount": 140,
+      "description": "Bubble-wrap packing, careful transit, and unboxing assistance. No hidden charges.",
+      "phone": "+91 99000 88771",
+      "isVerified": true,
+      "imageUrl": "/src/assets/images/property_modern_apartment_1791254862331.jpg",
+      "createdAt": "2026-02-01T10:00:00.000Z"
+    },
+    {
+      "id": "svc_02",
+      "providerId": "usr_srv_cleaning",
+      "title": "SparkleClean Deep Cleaning & Sanitization",
+      "category": "HOUSEKEEPING",
+      "city": "Bengaluru",
+      "areasServed": [
+        "Koramangala",
+        "HSR Layout",
+        "Indiranagar",
+        "Bellandur"
+      ],
+      "startingPrice": 899,
+      "pricingUnit": "Per Flat / PG Session",
+      "rating": 4.8,
+      "reviewsCount": 95,
+      "description": "Deep bathroom scrubbing, kitchen de-greasing, vacuuming, and eco-friendly disinfectants.",
+      "phone": "+91 99000 88772",
+      "isVerified": true,
+      "imageUrl": "/src/assets/images/roommate_community_lounge_1791254872925.jpg",
+      "createdAt": "2026-02-05T10:00:00.000Z"
+    },
+    {
+      "id": "svc_03",
+      "providerId": "usr_srv_laundry",
+      "title": "WashExpress Doorstep Laundry & Ironing",
+      "category": "LAUNDRY",
+      "city": "Pune",
+      "areasServed": [
+        "Viman Nagar",
+        "Kalyani Nagar",
+        "Hinjawadi"
+      ],
+      "startingPrice": 399,
+      "pricingUnit": "Per 5 Kg Wash & Fold",
+      "rating": 4.7,
+      "reviewsCount": 82,
+      "description": "Pick-up and drop within 24 hours. Fabric-safe detergents and neat steam pressing.",
+      "phone": "+91 99000 88773",
+      "isVerified": true,
+      "imageUrl": "/src/assets/images/hero_roommitra_pg_1791254850665.jpg",
+      "createdAt": "2026-02-08T10:00:00.000Z"
+    }
+  ],
+  "applications": [
+    {
+      "id": "app_101",
+      "propertyId": "prop_blr_101",
+      "propertyTitle": "Zest Stays Luxury Co-Living & Studio PG",
+      "applicantId": "usr_tenant_1",
+      "applicantName": "Rohan Patel",
+      "applicantPhone": "+91 91234 56780",
+      "applicantEmail": "user@roommitra.com",
+      "ownerId": "usr_owner_1",
+      "proposedMoveInDate": "2026-10-18",
+      "durationMonths": 6,
+      "message": "Hello Mr. Rajesh, I am a software engineer looking for a quiet single room. Would love to schedule a visit this Saturday afternoon.",
+      "status": "PENDING",
+      "createdAt": "2026-03-01T15:00:00.000Z"
+    },
+    {
+      "id": "app_1791300679610_b3841b",
+      "propertyId": "prop_pune_201",
+      "propertyTitle": "Serene Heights Premium Girls PG",
+      "applicantId": "usr_super_admin_1",
+      "applicantName": "Arjun Verma",
+      "applicantPhone": "+91 98112 00001",
+      "applicantEmail": "superadmin@roommitra.com",
+      "ownerId": "usr_owner_1",
+      "proposedMoveInDate": "2026-10-06",
+      "durationMonths": 6,
+      "message": "I am interested in renting this property. Please let me know the next steps.",
+      "status": "PENDING",
+      "createdAt": "2026-10-06T15:31:19.610Z"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "bk_201",
+      "propertyId": "prop_blr_102",
+      "propertyTitle": "Green Meadows 2BHK Furnished Tech Flat",
+      "userId": "usr_roommate_1",
+      "userName": "Ananya Deshmukh",
+      "ownerId": "usr_owner_1",
+      "roomType": "DOUBLE",
+      "rentPerMonth": 18000,
+      "depositAmount": 5000,
+      "totalPaid": 5000,
+      "status": "CONFIRMED",
+      "paymentId": "pay_tx_901",
+      "moveInDate": "2026-10-22",
+      "createdAt": "2026-02-28T16:00:00.000Z"
+    }
+  ],
+  "payments": [
+    {
+      "id": "pay_tx_901",
+      "bookingId": "bk_201",
+      "userId": "usr_roommate_1",
+      "amount": 5000,
+      "currency": "INR",
+      "description": "Token Deposit for Green Meadows 2BHK",
+      "status": "SUCCESS",
+      "paymentMethod": "UPI / NetBanking",
+      "gatewayTransactionId": "RM_GATEWAY_TXN_998124",
+      "createdAt": "2026-02-28T16:00:00.000Z"
+    }
+  ],
+  "conversations": [
+    {
+      "id": "conv_1",
+      "participants": [
+        {
+          "userId": "usr_tenant_1",
+          "name": "Rohan Patel",
+          "role": "USER"
+        },
+        {
+          "userId": "usr_owner_1",
+          "name": "Rajesh Iyer",
+          "role": "PROPERTY_OWNER"
+        }
+      ],
+      "lastMessage": "hi",
+      "lastMessageAt": "2026-10-06T15:16:55.581Z",
+      "unreadCount": 0,
+      "relatedPropertyId": "prop_blr_101"
+    }
+  ],
+  "messages": [
+    {
+      "id": "msg_1",
+      "conversationId": "conv_1",
+      "senderId": "usr_tenant_1",
+      "senderName": "Rohan Patel",
+      "receiverId": "usr_owner_1",
+      "text": "Hi Rajesh sir, is the single room available from Oct 18th?",
+      "isRead": true,
+      "createdAt": "2026-03-01T16:00:00.000Z"
+    },
+    {
+      "id": "msg_2",
+      "conversationId": "conv_1",
+      "senderId": "usr_owner_1",
+      "senderName": "Rajesh Iyer",
+      "receiverId": "usr_tenant_1",
+      "text": "Sure Rohan, Saturday at 3 PM works fine for the property walkthrough!",
+      "isRead": true,
+      "createdAt": "2026-03-01T16:30:00.000Z"
+    },
+    {
+      "id": "msg_1791299815581_5f7f71",
+      "conversationId": "conv_1",
+      "senderId": "usr_tenant_1",
+      "senderName": "Rohan Patel",
+      "receiverId": "usr_owner_1",
+      "text": "hi",
+      "isRead": false,
+      "createdAt": "2026-10-06T15:16:55.581Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif_1791300679611_22541d",
+      "userId": "usr_owner_1",
+      "title": "New Visit / Rental Request",
+      "message": "Arjun Verma submitted an application for Serene Heights Premium Girls PG.",
+      "type": "APPLICATION_UPDATE",
+      "link": "/dashboard",
+      "isRead": false,
+      "createdAt": "2026-10-06T15:31:19.611Z"
+    },
+    {
+      "id": "notif_1791299815582_988a66",
+      "userId": "usr_owner_1",
+      "title": "Message from Rohan Patel",
+      "message": "hi",
+      "type": "MESSAGE",
+      "link": "/dashboard",
+      "isRead": false,
+      "createdAt": "2026-10-06T15:16:55.582Z"
+    },
+    {
+      "id": "notif_1",
+      "userId": "usr_tenant_1",
+      "title": "Application Received",
+      "message": "Your visit request for Zest Stays Luxury Co-Living was submitted successfully.",
+      "type": "APPLICATION_UPDATE",
+      "link": "/dashboard",
+      "isRead": false,
+      "createdAt": "2026-03-01T15:01:00.000Z"
+    },
+    {
+      "id": "notif_2",
+      "userId": "usr_owner_1",
+      "title": "New Visit Request",
+      "message": "Rohan Patel requested a visit for Zest Stays Luxury Co-Living.",
+      "type": "APPLICATION_UPDATE",
+      "link": "/dashboard",
+      "isRead": false,
+      "createdAt": "2026-03-01T15:01:00.000Z"
+    }
+  ],
+  "reports": [
+    {
+      "id": "rep_01",
+      "reporterId": "usr_tenant_1",
+      "reporterName": "Rohan Patel",
+      "targetType": "PROPERTY",
+      "targetId": "prop_blr_102",
+      "targetTitleOrName": "Green Meadows 2BHK",
+      "category": "INCORRECT_PRICING",
+      "description": "The listing mentioned maintenance included in the header but excluded in terms.",
+      "status": "OPEN",
+      "createdAt": "2026-03-02T12:00:00.000Z"
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "audit_01",
+      "adminId": "usr_admin_1",
+      "adminEmail": "admin@roommitra.com",
+      "adminRole": "ADMIN",
+      "action": "APPROVE_LISTING",
+      "targetType": "PROPERTY",
+      "targetId": "prop_blr_101",
+      "details": "Approved after verifying electricity bill and ownership documentation.",
+      "ipAddress": "127.0.0.1",
+      "result": "SUCCESS",
+      "createdAt": "2026-02-10T11:05:00.000Z"
+    },
+    {
+      "id": "audit_02",
+      "adminId": "usr_super_admin_1",
+      "adminEmail": "superadmin@roommitra.com",
+      "adminRole": "SUPER_ADMIN",
+      "action": "UPDATE_SYSTEM_SETTINGS",
+      "targetType": "SETTINGS",
+      "targetId": "GLOBAL",
+      "details": "Enforced mandatory admin verification for new rental listings.",
+      "ipAddress": "127.0.0.1",
+      "result": "SUCCESS",
+      "createdAt": "2026-02-12T09:00:00.000Z"
+    }
+  ],
+  "savedProperties": [
+    {
+      "userId": "usr_tenant_1",
+      "propertyId": "prop_blr_101"
+    }
+  ],
+  "blockedUsers": [],
+  "settings": {
+    "allowNewRegistrations": true,
+    "requirePropertyApproval": true,
+    "requireProviderApproval": true,
+    "enableInstantBooking": true,
+    "maintenanceMode": false,
+    "platformFeePercentage": 2.5,
+    "homepageContent": {
+      "heroTitle": "Everything You Need For Living, All In One Place.",
+      "heroSubtitle": "Find rooms, PGs, hostels, roommates, tiffin, laundry and everyday living services — all from one trusted platform.",
+      "heroBadgeText": "Zero Brokerage Guaranteed",
+      "heroImage": "/src/assets/images/hero_roommitra_pg_1791254850665.jpg",
+      "primaryCtaText": "Find Your Place",
+      "secondaryCtaText": "List Your Property",
+      "statsConfig": {
+        "verifiedListings": "1,200+",
+        "activeUsers": "8,000+",
+        "citiesCovered": "15+",
+        "partnersCount": "50+",
+        "showStats": true
+      }
+    },
+    "popularCities": [
+      {
+        "id": "city-blr",
+        "name": "Bengaluru",
+        "state": "Karnataka",
+        "tagline": "Tech Capital · 180+ Hubs",
+        "listingCount": 420,
+        "imageUrl": "/src/assets/images/hero_roommitra_pg_1791254850665.jpg",
+        "slug": "bengaluru",
+        "isActive": true
+      },
+      {
+        "id": "city-pun",
+        "name": "Pune",
+        "state": "Maharashtra",
+        "tagline": "IT & Student Hub · 95+ Hubs",
+        "listingCount": 280,
+        "imageUrl": "/src/assets/images/property_modern_apartment_1791254862331.jpg",
+        "slug": "pune",
+        "isActive": true
+      },
+      {
+        "id": "city-hyd",
+        "name": "Hyderabad",
+        "state": "Telangana",
+        "tagline": "Cyber Towers · 110+ Hubs",
+        "listingCount": 310,
+        "imageUrl": "/src/assets/images/roommate_community_lounge_1791254872925.jpg",
+        "slug": "hyderabad",
+        "isActive": true
+      }
+    ],
+    "faqs": [
+      {
+        "id": "faq-1",
+        "question": "Is there truly zero brokerage on RoomMitra?",
+        "answer": "Yes, 100%. Tenants connect directly with verified owners with no middleman commission.",
+        "category": "GENERAL"
+      }
+    ]
+  },
+  "banners": [
+    {
+      "id": "bnr_top_alert",
+      "title": "Semester Move-In Perk: 1st Month High-Speed WiFi & Laundry Included Free on Verified Single PGs",
+      "subtitle": "Valid for new tenants moving in this month across Bengaluru & Pune",
+      "imageUrl": "/src/assets/images/property_modern_apartment_1791254862331.jpg",
+      "ctaText": "Explore PGs",
+      "ctaUrl": "/properties",
+      "placement": "TOP_ALERT",
+      "badgeText": "Limited Offer",
+      "sponsorName": "RoomMitra Campus",
+      "targetTab": "properties",
+      "clicksCount": 146,
+      "impressionsCount": 4201,
+      "startDate": "2026-01-01",
+      "endDate": "2026-12-31",
+      "status": "ACTIVE",
+      "displayOrder": 1,
+      "targetAudience": "STUDENTS"
+    },
+    {
+      "id": "bnr_hero",
+      "title": "Zero Brokerage Coliving Fest 2026",
+      "subtitle": "Save up to ₹25,000 in broker fees. Verified coliving & PG spaces with 100% deposit protection in Koramangala, HSR & Hinjawadi.",
+      "imageUrl": "/src/assets/images/hero_roommitra_pg_1791254850665.jpg",
+      "ctaText": "Claim Free Move-In Pass",
+      "ctaUrl": "/properties",
+      "placement": "HERO",
+      "badgeText": "Festival Special",
+      "sponsorName": "RoomMitra Direct",
+      "targetTab": "properties",
+      "clicksCount": 312,
+      "impressionsCount": 2451,
+      "startDate": "2026-01-01",
+      "endDate": "2026-12-31",
+      "status": "ACTIVE",
+      "displayOrder": 2,
+      "targetAudience": "ALL"
+    },
+    {
+      "id": "bnr_props",
+      "title": "StayAbode Luxury Tech Co-Living Suites",
+      "subtitle": "Biometric security, ergonomically curated private desks, 300 Mbps fiber & 3-time chef meals in HSR & Koramangala.",
+      "imageUrl": "/src/assets/images/property_modern_apartment_1791254862331.jpg",
+      "ctaText": "View Suites from ₹13,500",
+      "ctaUrl": "/properties",
+      "placement": "PROPERTIES",
+      "badgeText": "Featured Partner",
+      "sponsorName": "StayAbode Co-Living",
+      "targetTab": "properties",
+      "clicksCount": 184,
+      "impressionsCount": 1981,
+      "startDate": "2026-01-01",
+      "endDate": "2026-12-31",
+      "status": "ACTIVE",
+      "displayOrder": 3,
+      "targetAudience": "ALL"
+    },
+    {
+      "id": "bnr_tiffin",
+      "title": "Annapurna Gourmet Homestyle Tiffin",
+      "subtitle": "Zero baking soda, low oil, FSSAI certified. Free weekend sweet dish + cooling buttermilk on all monthly passes.",
+      "imageUrl": "/src/assets/images/tiffin_food_thali_1791254883521.jpg",
+      "ctaText": "Start 7-Day Trial at ₹80/meal",
+      "ctaUrl": "/tiffin",
+      "placement": "TIFFIN",
+      "badgeText": "Certified Kitchen",
+      "sponsorName": "Annapurna Cloud Kitchens",
+      "targetTab": "tiffin",
+      "clicksCount": 228,
+      "impressionsCount": 2151,
+      "startDate": "2026-01-01",
+      "endDate": "2026-12-31",
+      "status": "ACTIVE",
+      "displayOrder": 4,
+      "targetAudience": "ALL"
+    },
+    {
+      "id": "bnr_roommates",
+      "title": "Flatmate Background & Lifestyle Verification",
+      "subtitle": "Protect your peace of mind. Get instant ID authentication, college/workplace verification & roommate compatibility index.",
+      "imageUrl": "/src/assets/images/roommate_community_lounge_1791254872925.jpg",
+      "ctaText": "Find Compatible Flatmates",
+      "ctaUrl": "/roommates",
+      "placement": "ROOMMATES",
+      "badgeText": "Safety First",
+      "sponsorName": "RoomMitra Trust Bureau",
+      "targetTab": "roommates",
+      "clicksCount": 96,
+      "impressionsCount": 1641,
+      "startDate": "2026-01-01",
+      "endDate": "2026-12-31",
+      "status": "ACTIVE",
+      "displayOrder": 5,
+      "targetAudience": "ALL"
+    },
+    {
+      "id": "bnr_services",
+      "title": "SpeedyMove Express Packers & Movers",
+      "subtitle": "Special student luggage relocation between cities & local tempo shifting. Safe handling with real-time GPS tracking.",
+      "imageUrl": "/src/assets/images/laundry_clean_service_1791257196915.jpg",
+      "ctaText": "Book Shifting at 20% Off",
+      "ctaUrl": "/services",
+      "placement": "SERVICES",
+      "badgeText": "Verified Partner",
+      "sponsorName": "SpeedyMove Relocations",
+      "targetTab": "services",
+      "clicksCount": 78,
+      "impressionsCount": 1121,
+      "startDate": "2026-01-01",
+      "endDate": "2026-12-31",
+      "status": "ACTIVE",
+      "displayOrder": 6,
+      "targetAudience": "ALL"
+    },
+    {
+      "id": "bnr_midpage",
+      "title": "Relocating to Bengaluru, Pune or Hyderabad for Work?",
+      "subtitle": "Get a fully furnished studio, pre-vetted roommates, and hot home-cooked meals delivered from day one. Zero stress, zero brokerage.",
+      "imageUrl": "/src/assets/images/hero_roommitra_pg_1791254850665.jpg",
+      "ctaText": "Get Free Relocation Consultation",
+      "ctaUrl": "/properties",
+      "placement": "MIDPAGE",
+      "badgeText": "Prime Relocation",
+      "sponsorName": "RoomMitra Concierge",
+      "targetTab": "properties",
+      "clicksCount": 420,
+      "impressionsCount": 3891,
+      "startDate": "2026-01-01",
+      "endDate": "2026-12-31",
+      "status": "ACTIVE",
+      "displayOrder": 7,
+      "targetAudience": "ALL"
+    }
+  ],
+  "announcements": [
+    {
+      "id": "anc_1",
+      "title": "Mandatory Physical Audit Standards Update",
+      "message": "All PG properties must complete verified fire safety checks and electrical audit by Oct 2026.",
+      "audience": "ALL",
+      "startDate": "2026-09-01",
+      "endDate": "2026-12-31",
+      "priority": "HIGH",
+      "status": "ACTIVE",
+      "createdAt": "2026-09-01T10:00:00.000Z"
+    },
+    {
+      "id": "anc_2",
+      "title": "Direct UPI Token Deposit Escrow Protection",
+      "message": "Tenants are protected by 100% money-back escrow on all reserved accommodations.",
+      "audience": "ALL",
+      "startDate": "2026-08-15",
+      "endDate": "2026-11-30",
+      "priority": "MEDIUM",
+      "status": "ACTIVE",
+      "createdAt": "2026-08-15T09:00:00.000Z"
+    }
+  ],
+  "coupons": [
+    {
+      "id": "cpn_1",
+      "code": "ROOMMITRA1000",
+      "discountType": "FIXED",
+      "discountValue": 1000,
+      "minAmount": 5000,
+      "maxDiscount": 1000,
+      "usageLimit": 500,
+      "usedCount": 68,
+      "perUserLimit": 1,
+      "startDate": "2026-01-01",
+      "expiryDate": "2026-12-31",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "cpn_2",
+      "code": "STUDENT10",
+      "discountType": "PERCENTAGE",
+      "discountValue": 10,
+      "minAmount": 3000,
+      "maxDiscount": 1500,
+      "usageLimit": 1000,
+      "usedCount": 142,
+      "perUserLimit": 1,
+      "startDate": "2026-01-01",
+      "expiryDate": "2026-12-31",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "cpn_3",
+      "code": "TIFFIN250",
+      "discountType": "FIXED",
+      "discountValue": 250,
+      "minAmount": 2000,
+      "usageLimit": 250,
+      "usedCount": 39,
+      "perUserLimit": 1,
+      "startDate": "2026-01-01",
+      "expiryDate": "2026-12-31",
+      "status": "ACTIVE"
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat_rooms",
+      "name": "Rooms",
+      "slug": "rooms",
+      "icon": "🏠",
+      "description": "Furnished & semi-furnished rooms",
+      "status": "ACTIVE",
+      "displayOrder": 1
+    },
+    {
+      "id": "cat_pg",
+      "name": "PG / Hostel",
+      "slug": "pg-hostel",
+      "icon": "🏢",
+      "description": "Affordable stays for students & professionals",
+      "status": "ACTIVE",
+      "displayOrder": 2
+    },
+    {
+      "id": "cat_roommates",
+      "name": "Roommates",
+      "slug": "roommates",
+      "icon": "👥",
+      "description": "Compatible flatmate matching",
+      "status": "ACTIVE",
+      "displayOrder": 3
+    },
+    {
+      "id": "cat_tiffin",
+      "name": "Tiffin / Food",
+      "slug": "tiffin",
+      "icon": "🍱",
+      "description": "Homely daily food deliveries",
+      "status": "ACTIVE",
+      "displayOrder": 4
+    },
+    {
+      "id": "cat_laundry",
+      "name": "Laundry",
+      "slug": "laundry",
+      "icon": "🧺",
+      "description": "Weight-based doorstep wash & iron",
+      "status": "ACTIVE",
+      "displayOrder": 5
+    },
+    {
+      "id": "cat_library",
+      "name": "Library",
+      "slug": "library",
+      "icon": "📚",
+      "description": "24/7 quiet study spaces",
+      "status": "ACTIVE",
+      "displayOrder": 6
+    },
+    {
+      "id": "cat_cleaning",
+      "name": "Cleaning & Housekeeping",
+      "slug": "cleaning",
+      "icon": "✨",
+      "description": "Move-in sanitization and maintenance",
+      "status": "ACTIVE",
+      "displayOrder": 7
+    },
+    {
+      "id": "cat_movers",
+      "name": "Movers & Packers",
+      "slug": "movers",
+      "icon": "🚚",
+      "description": "Mini-tempo student relocation",
+      "status": "ACTIVE",
+      "displayOrder": 8
+    }
+  ],
+  "reviews": [
+    {
+      "id": "rev_1",
+      "userId": "usr_tenant_1",
+      "userName": "Aarav Sharma",
+      "targetType": "PROPERTY",
+      "targetId": "prop_blr_101",
+      "targetTitle": "Urban Oasis Luxury Executive PG",
+      "rating": 5,
+      "comment": "Super clean single room with AC and fast Wi-Fi. What was shown in the app matched exactly. Zero brokerage was genuine!",
+      "status": "PUBLISHED",
+      "createdAt": "2026-09-20T14:30:00.000Z"
+    },
+    {
+      "id": "rev_2",
+      "userId": "usr_tenant_2",
+      "userName": "Priya Deshmukh",
+      "targetType": "SERVICE",
+      "targetId": "tif_blr_1",
+      "targetTitle": "Annapurna Home Kitchens",
+      "rating": 5,
+      "comment": "Hot rotis and fresh dal every single day without fail. The pause feature came in very handy when I traveled for Diwali.",
+      "status": "PUBLISHED",
+      "createdAt": "2026-09-28T11:15:00.000Z"
+    }
+  ],
+  "adminRoles": [
+    {
+      "role": "SUPER_ADMIN",
+      "title": "Super Administrator",
+      "description": "Root system access, role assignment, configuration & financial controls",
+      "permissions": [
+        "users.read",
+        "users.edit",
+        "users.suspend",
+        "users.delete",
+        "properties.read",
+        "properties.approve",
+        "properties.delete",
+        "services.manage",
+        "bookings.read",
+        "bookings.manage",
+        "payments.read",
+        "payments.refund",
+        "reports.manage",
+        "reviews.manage",
+        "messages.inspect",
+        "content.manage",
+        "marketing.manage",
+        "admins.manage",
+        "settings.manage",
+        "audit.read"
+      ],
+      "userCount": 1
+    },
+    {
+      "role": "ADMIN",
+      "title": "Administrator",
+      "description": "Full day-to-day operations, user management, and listing approvals",
+      "permissions": [
+        "users.read",
+        "users.edit",
+        "users.suspend",
+        "properties.read",
+        "properties.approve",
+        "services.manage",
+        "bookings.read",
+        "bookings.manage",
+        "payments.read",
+        "reports.manage",
+        "reviews.manage",
+        "content.manage",
+        "marketing.manage",
+        "audit.read"
+      ],
+      "userCount": 1
+    },
+    {
+      "role": "MODERATOR",
+      "title": "Content & Safety Moderator",
+      "description": "Review listings, resolve tenant grievances, and enforce community standards",
+      "permissions": [
+        "properties.read",
+        "properties.approve",
+        "users.read",
+        "users.suspend",
+        "reports.manage",
+        "reviews.manage"
+      ],
+      "userCount": 0
+    },
+    {
+      "role": "SUPPORT",
+      "title": "Customer Support Lead",
+      "description": "Tenant assistance, booking inquiry verification, and dispute coordination",
+      "permissions": [
+        "users.read",
+        "properties.read",
+        "bookings.read",
+        "reports.manage",
+        "payments.read"
+      ],
+      "userCount": 0
+    },
+    {
+      "role": "CONTENT_MANAGER",
+      "title": "CMS & Marketing Manager",
+      "description": "Manage homepage content, banners, FAQs, promo codes, and city guides",
+      "permissions": [
+        "content.manage",
+        "marketing.manage",
+        "properties.read"
+      ],
+      "userCount": 0
+    },
+    {
+      "role": "FINANCE_MANAGER",
+      "title": "Finance & Escrow Officer",
+      "description": "Escrow verification, payment transaction auditing, and refund issuance",
+      "permissions": [
+        "payments.read",
+        "payments.refund",
+        "bookings.read",
+        "properties.read"
+      ],
+      "userCount": 0
+    }
+  ]
+}
